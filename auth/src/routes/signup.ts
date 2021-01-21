@@ -17,11 +17,13 @@ router.post(
      const errors = validationResult(req); //Extrae los errores
 
      if(!errors.isEmpty()){ //Comprueba si existen errores
-         return res.status(400).send(errors.array()); //Return early y envia los errores
+         throw new Error("Invalid email or password!"); //Express captura los errores y los envia a nuestro errorHandler
      }
     const { email, password } = req.body;
 
     console.log('Creating a user...');
+    throw new Error("Error connecting to database");
+     
 
     res.send({});
 });
