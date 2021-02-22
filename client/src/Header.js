@@ -1,5 +1,6 @@
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default ({ currentUser }) => {
   const links = [
     !currentUser && { label: 'Sign Up', href: '/auth/signup' },
@@ -10,19 +11,14 @@ export default ({ currentUser }) => {
     .map(({ label, href }) => {
       return (
         <li key={href} className="nav-item">
-          <Link href={href}>
-            <a className="nav-link">{label}</a>
-          </Link>
+            <Link className="nav-link" to={href}>{label}</Link>
         </li>
       );
     });
 
   return (
     <nav className="navbar navbar-light bg-light">
-      <Link href="/">
-        <a className="navbar-brand">GitTix</a>
-      </Link>
-
+        <Link href="/" className="navbar-brand">GitTix</Link>
       <div className="d-flex justify-content-end">
         <ul className="nav d-flex align-items-center">{links}</ul>
       </div>

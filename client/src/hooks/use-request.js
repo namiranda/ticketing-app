@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default ({ url, method, body, onSuccess }) => {
   const [errors, setErrors] = useState(null);
 
