@@ -7,9 +7,19 @@ import {
 } from "react-router-dom";
 import SignUp from './routes/SignUp';
 import SignIn from './routes/SignIn';
+import SignOut from './routes/SignOut';
 import Landing from './routes/Landing';
+import axios from "axios";
 
-export default function App({currentUser}) {
+export default function App() {
+  let currentUser
+  React.useEffect( () => {
+   async function fetchData() {
+     currentUser = await axios("/api/users/currentuser"); //cambiar esto
+   }
+   fetchData();
+  })
+
   const links = [
     !currentUser && { label: 'Sign Up', href: '/auth/signup' },
     !currentUser && { label: 'Sign In', href: '/auth/signin' },
@@ -43,8 +53,11 @@ export default function App({currentUser}) {
           <Route path="/auth/signin">
             <SignIn/>
           </Route>
+          <Route path="/auth/signout">
+            <SignOut/>
+          </Route>
           <Route path="/">
-            <Landing/>
+            <Landing currentUser={currentUser}/>
           </Route>
         </Switch>
       </div>

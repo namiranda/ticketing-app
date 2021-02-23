@@ -1,9 +1,11 @@
 import { useState } from 'react';
 //import Router from 'next/router';
 import useRequest from '../hooks/use-request';
+import { useHistory } from "react-router-dom";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
+  let history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { doRequest, errors } = useRequest({
@@ -13,7 +15,7 @@ export default () => {
       email,
       password
     },
-   // onSuccess: () => Router.push('/') aca redirecciona
+   onSuccess: () => history.push('/')
   });
 
   const onSubmit = async event => {
