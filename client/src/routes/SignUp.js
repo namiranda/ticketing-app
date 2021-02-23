@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Router from 'next/router';
-import useRequest from '../../hooks/use-request';
+//import Router from 'next/router';
+import useRequest from '../hooks/use-request';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
@@ -13,7 +13,7 @@ export default () => {
       email,
       password
     },
-    onSuccess: () => Router.push('/')
+   // onSuccess: () => Router.push('/') aca redirecciona
   });
 
   const onSubmit = async event => {
